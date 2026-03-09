@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# 📦 Repositório - Gestão de Categorias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o Front-end de uma aplicação web desenvolvida para o gerenciamento de categorias de produtos. O projeto foi construído com foco em uma interface de usuário limpa, responsiva e com feedback visual em tempo real, garantindo uma integração fluida com a API de back-end.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O sistema oferece um CRUD completo (Create, Read, Update, Delete) para a entidade **Categoria**, consumindo endpoints RESTful de forma assíncrona e segura:
 
-## React Compiler
+* **Listagem Dinâmica:** Exibição de todas as categorias cadastradas em um grid responsivo que se adapta automaticamente a dispositivos móveis e desktops.
+* **Cadastro e Edição:** Formulários unificados e inteligentes para a criação e atualização de categorias, reutilizando componentes para manter o código DRY (Don't Repeat Yourself).
+* **Deleção Segura:** Tela de confirmação dedicada antes de apagar um registro, prevenindo exclusões acidentais por parte do usuário.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎨 Identidade Visual e UI/UX
 
-## Expanding the ESLint configuration
+A interface foi inteiramente desenhada utilizando **Tailwind CSS**, abandonando o CSS tradicional em arquivos separados para adotar uma abordagem de *Utility-First*.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Paleta de Cores:** O design gravita em torno da cor primária **Rosa/Roxo vibrante (`#BB2ED7`)**, utilizada de forma estratégica em botões, bordas de destaque e tipografia para guiar a atenção do usuário aos elementos de ação principal.
+* **Interatividade:** Foram implementados efeitos de transição suaves (`transition-colors`, `hover:shadow-xl`) nos cards e botões, criando uma sensação tátil e moderna ao navegar pela aplicação.
+* **Minimalismo Funcional:** Seguindo as regras de negócio da API, campos obrigatórios no back-end (como a URL da foto) são processados e validados no formulário, mas intencionalmente ocultados na listagem de cards para manter a interface limpa e focada no nome da categoria.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🔗 Validação de Dados: O Campo "Foto"
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Para garantir a integridade dos dados enviados ao back-end e evitar o erro `400 Bad Request`, o front-end conta com validação no momento do preenchimento. 
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+O campo **URL da Foto** é estritamente obrigatório. A interface instrui e valida se o usuário está inserindo um link estruturado corretamente, garantindo que o banco de dados armazene apenas URLs válidas. 
+> 💡 *Dica de uso:* Durante o desenvolvimento e testes, o sistema sugere a utilização da ferramenta externa [picsum.photos](https://picsum.photos/) para a geração de links válidos de imagens aleatórias, facilitando a prototipagem.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* **React + Vite:** Para um ambiente de desenvolvimento ultrarrápido e build otimizado.
+* **TypeScript:** Garantindo a tipagem estática dos modelos de dados (`Categoria`, `Produto`) e evitando erros em tempo de execução.
+* **Tailwind CSS:** Para estilização rápida, responsiva e consistente.
+* **React Router Dom:** Gerenciamento das rotas da aplicação (Navegação SPA).
+* **Axios:** Cliente HTTP para a comunicação com a API RESTful.
+* **React Spinners:** Fornecimento de feedback visual durante requisições assíncronas.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ⚙️ Como Executar o Projeto Localmente
+
+1. Clone este repositório.
+2. Acesse a pasta do projeto no terminal.
+3. Instale as dependências executando: `npm install`
+4. Inicie o servidor de desenvolvimento: `npm run dev`
+5. Acesse o link fornecido no terminal (geralmente `http://localhost:5173`).
