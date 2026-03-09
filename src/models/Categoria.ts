@@ -1,12 +1,9 @@
+import type Produto from './Produto';
+
 export default interface Categoria {
-
-    // id da categoria - usado para identificar, editar e deletar
     id: number;
-
-    // nome da categoria - exemplo: Medicamentos, Cosméticos, Higiene
     nome: string;
-
-    // descrição da categoria - exemplo: Produtos relacionados à saúde
-    descricao: string;
-
+    foto: string;
+    // Opcional: Se você já tiver o model de Produto, pode trocar 'any' por 'Produto[]'
+    produto?: Produto[] | null; 
 }
